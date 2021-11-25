@@ -1,4 +1,6 @@
 // 비콘을 이용한 자율주행 배달 시스템 - 자동차
+#include <SoftwareSerial.h>
+SoftwareSerial RFSerial(2, 3); //TX to 2, RX to 3
 
 int rMoterS = 10;   // Moter Speed
 int lMoterS = 11;    
@@ -17,6 +19,7 @@ int led = 7;
 
 void setup(){               // 핀모드 설정 & 시리얼 통신 시작
   Serial.begin(9600);
+  RFSerial.begin(9600);
   
   pinMode(rMoterS,OUTPUT);
   pinMode(lMoterS,OUTPUT);
@@ -51,9 +54,13 @@ void loop(){
     digitalWrite(lMoterD,LOW);
     break;
   }
-    
-  if(Serial.available() > 0){   // 블루투스 조작
-    command = Serial.read(); 
+
+  if (RFSerial.available()){ 
+    Serial.write(RFSerial.read());
+  }
+  
+  if(RFSerial.available() > 0){   // RF통신 조작
+    command = RFSerial.read(); 
     stop();
     switch(command){
       case 'Y':
@@ -88,6 +95,9 @@ void loop(){
           case '3':
             backwardleft();
             break;
+          case 'S':
+            stop();
+            break;
         }
       }
     }
@@ -102,6 +112,9 @@ void loop(){
     analogWrite(lMoterS,0);
     digitalWrite(led, LOW);
   }
+
+  Serial.println(command);
+  delay(100);
 }
 
 void forward(){     // 전진
