@@ -11,3 +11,6 @@ barami_joycontroller_noCommunication
 
 barami_car_noBeacon <br>
 barami_joycontroller_noBeacon
+
+https://youtu.be/NmiGZ6Cq1X4 <br>
+https://youtu.be/aC3_Xr2P1Lc
