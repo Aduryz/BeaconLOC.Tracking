@@ -16,8 +16,7 @@ barami_car_Beacon <br>
 barami_joycontroller_Beacon
 
 https://youtu.be/NmiGZ6Cq1X4 <br>
-https://youtu.be/aC3_Xr2P1Lc
+https://youtu.be/aC3_Xr2P1Lc <br>
 
-<iframe width="956" height="538" src="https://www.youtube.com/embed/ozv4q2ov3Mk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <iframe width="1280" height="721" src="https://www.youtube.com/embed/yJEVJwnj7W8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
