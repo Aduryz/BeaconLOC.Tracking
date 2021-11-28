@@ -163,7 +163,7 @@ void loop(){
     digitalWrite(led, LOW);
   }
 
-  if (BSerial.available()){
+  if (BSerial.available()){  //beacon scan receive
     String val = BSerial.readString();
     Serial.print("I received: ");
     Serial.println(val);  //beacon scan value
@@ -238,7 +238,7 @@ void loop(){
     pR = pinkR.toInt();
     oR = orangeR.toInt();
     yR = yellowR.toInt();
-    if(pR>-90 && oR<-90 && yR<-90){
+    if(pR>-90 && oR<-90 && yR<-90){  //locantion tracking
       location = 'A';
     }
     else if(pR<-90 && oR>-90 && yR<-90){
@@ -263,7 +263,7 @@ void loop(){
       location = 'U';
     }
 
-    now = millis();
+    now = millis();  //send location
     if (now - 500 > lastSend) { 
       RFSerial.write(location);
       lastSend = now;
@@ -332,10 +332,10 @@ void stop(){    // 정지
   analogWrite(lMoterS,0);
 }
 
-void scan(){
+void scan(){  //beacon scan
   pinkP = 0;
   orangeP = 0;
   yellowP = 0;
   delay(1000);  // 꼭 있어야함
-  BSerial.println("AT+SCAN"); //beacon scan
+  BSerial.println("AT+SCAN"); //CLE-310 scan
 }
