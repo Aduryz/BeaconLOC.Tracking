@@ -3,7 +3,7 @@ SoftwareSerial RFSerial(2, 3); //TX to 2, RX to 3
 
 #include <LiquidCrystal_I2C.h>
 
-char xPin = A0;
+char xPin = A0;  //joystick
 char yPin = A1;
 char zPin = 8;
 int buttonPin = 7;
@@ -19,13 +19,13 @@ int carStance = 0; // 자동차 on/off
 
 int speed = 0;
 
-long lastSend, now;
+long lastSend, now;  //RF send
 char command;
 String speedSend;
 String sendString;
 char send[100];
 
-char location = 'U';
+char location = 'U';  //vehicle location
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
@@ -238,7 +238,7 @@ void loop(){
     delay(100);
   }
 
-  now = millis();
+  now = millis();  //RF통신 속도 
   if (now - 500 > lastSend) { 
     /* // 방향과 속도를 둘 다 보내기 위한 코드이나 송신 속도를 엄청 느리게해야 동시에 보낼 수 있기 때문에 일단 삭제
     speedSend = String(speed);
