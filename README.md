@@ -35,12 +35,10 @@
 
 그리고 자율 배달 과정에서의 여러 변수들을 통제하기 위해 장애물 회피, 사람이 직접 조작이 가능한 시스템을 추가하고자 한다.<br>
 
----
-
 ## 작품 제작
 
 ### 자율주행 자동차 제작
-<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/vehicle1.jpg" width="90%"> <br>
+ ![vehicle](https://user-images.githubusercontent.com/65582244/144002296-fc849781-290a-46bb-b52e-d346a6927dbd.jpg) <br>
 **Arduino UNO보드와 L298P보드, 초음파 센서를 이용하여 Level3 자율주행 자동차 제작** <br>
 선행 연구인 <a href="https://github.com/choi92/Photovoltaic_Autonomous_Vehicle" target="_blank">"태양광 자율주행 자동차"</a> 의 자동차를 활용
 - 3.7 V, 2600 mAh인 18650 리튬 이온 전지 2개를 이용하여 7.4 V의 전원을 공급해준다.
@@ -58,7 +56,7 @@
 <a href="https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_vehicle_Beacon.ino" target="_blank">자율주행 자동차 소스 코드 깃허브</a>
 
 ### 조이스틱 컨트롤러 제작
-<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/joycon.jpg" width="90%"> <br>
+![joycon](https://user-images.githubusercontent.com/65582244/144002334-fb734d00-c259-4bd0-b1ee-c7bccaed6854.jpg) <br>
 **Arduino UNO보드와 조이스틱을 이용하여 조이스틱 컨트롤러 제작, I2C LCD로 자동차 상태 표시**
 - 조이스틱의 신호를 I2C LCD에 표시하고 HC-11을 이용하여 자동차와 RF통신을 하여 조종할 수 있게 한다.
 - HC-11을 이용하여 자동차와 RF통신을 하여 자동차의 위치를 받는다.
@@ -67,7 +65,7 @@
 - 버튼을 누르면 자동차가 위치추적을 하게 한다.
 
 #### 알고리즘
-<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/joycon2.png" width="90%"> <br>
+![image](https://user-images.githubusercontent.com/65582244/144002437-b9e1b69c-7bfd-4d5c-b830-717ea31fdd96.png) <br>
 - 먼저 좌표평면처럼 x값이 오른쪽으로 갈수록 커지고, y값이 위쪽으로 갈수록 커지게 한다.
 - 0V ~ 5 V 사이의 값이 아날로그 형태로 0 ~ 1023으로 나타내어진다.
 - x,y값이 470 ~ 550인 상태는 움직이지 않은 상태로 간주하고 정지 명령을 내린다.
@@ -77,8 +75,7 @@
 - forwardleft, forwardright, backwardleft, backwardright는 모터의 속도를 다르게하여 일반적인 방향전환을 한다. (50%->25%로 수정)
 
 #### 3D 프린팅
-<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/3d.jpg" width="90%"> <br>
-<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/3d2.jpg" width="90%"> <br>
+![3d2](https://user-images.githubusercontent.com/65582244/144002479-1ba22602-e177-4994-afb0-a65d18954ee5.jpg) <br>
 3D 모델링을 한 후 프린팅을 하여 컨트롤러의 케이스를 제작하려 했으나 프린터의 문제로 프린팅 실패
 
 
@@ -86,17 +83,15 @@
 <a href="https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_Joycontroller_Beacon.ino" target="_blank">조이스틱 컨트롤러 소스 코드 깃허브</a>
 
 ### Beacon 제작
-<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/beacons.jpg" width="90%"> <br>
+![beacons](https://user-images.githubusercontent.com/65582244/144002519-5e966281-952f-4a30-be2c-7fc1d343e02b.jpg) <br>
 **BOT CLE310 3개로 beacon을 구현**
 - CLE310 작동 전압에 맞게 1.5 V 전지 2개를 직렬 연결하여 3 V의 전원을 공급해준다.
 - HOST CLE310이 SCAN할 수 있게 BOT으로 모드를 변경하고 GPI를 LOW로 한다.
 - beacon들이 헷갈리지 않도록 pink, orange, yellow로 구분한다.
 
----
-
 ## 위치추적 알고리즘 설계
 ### Beacon으로 실험
-<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/beacon1.jpg" width="90%"> <br>
+![beacon1](https://user-images.githubusercontent.com/65582244/144002585-f0dd64b6-cf2a-4604-9bb3-f2e883b48b2e.jpg) <br>
 HOST에 들어오는 RSSI 값을 보면서 beacon들의 위치를 계속 바꾸고, RSSI 값들을 기록
 
 #### 실험 결과 
@@ -106,8 +101,8 @@ HOST에 들어오는 RSSI 값을 보면서 beacon들의 위치를 계속 바꾸�
 - 다른 거리에서는 RSSI 값이 유동적으로 변하고 저 거리에서만 명확하게 구분 가능하다.
 - 따라서 RSSI 값이 -90일 때를 기준으로 5.15 m 안에 있는지 밖에 있는지 판단한다.
 
-### 구역 설정
-<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/location3.jpg" width="90%"> <br>
+## 구역 설정
+#![location3](https://user-images.githubusercontent.com/65582244/144002610-a8b1b165-381f-4235-bf59-366325965eeb.jpg) <br>
 - beacon 3개의 RSSI 값을 이용하여 반지름이 5.15 m인 원 3개 설정한다.
 - 원 3개의 벤 다이어그램을 설정하여 구역을 7개로 나눈다.
 - 벤 다이어그램 외부 구역은 U이다.
@@ -119,8 +114,6 @@ HOST에 들어오는 RSSI 값을 보면서 beacon들의 위치를 계속 바꾸�
 - beacon들의 어드레스를 이용하여 RSSI 값들을 각각 parsing한다. (자세한 소스 코드는 자동차 소스 코드 참조)
 - RSSI 값이 -90일 때를 기준으로 반지름이 5.15 m인 원 안에 있는지 밖에 있는지 판단한다.
 - 어느 원 안에 있는지를 판단하여 어느 구역에 있는지 벤 다이어그램에서 판단한다.
-
----
 
 ## 작품 구동
 
@@ -138,13 +131,11 @@ HOST에 들어오는 RSSI 값을 보면서 beacon들의 위치를 계속 바꾸�
 <a href="https://youtu.be/NmiGZ6Cq1X4" target="_blank">자율주행 자동차 장애물 회피 유튜브</a>
 
 ### Beacon을 이용한 위치 추적
-<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/location22.png" width="90%"> <br>
+![location22](https://user-images.githubusercontent.com/65582244/144002678-ad6b970e-ff0c-414b-8a2c-f340be3f4844.png) <br>
 넓은 공터에서 beacon들을 배치하고 자동차를 이동시켜 알고리즘대로 위치추적 <br>
 
-<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/location.jpg" width="90%"> <br>
+![location](https://user-images.githubusercontent.com/65582244/144002706-2adc7507-962b-4461-9d45-81fa00af58a7.jpg) <br>
 자동차의 위치추적 성공
-
----
 
 ## 의의
 **RF통신 경험** - 다중 시리얼 입출력이랑 직접 통신 프로토콜 짜는 경험을 해봄으로서 통신을 배운다.
@@ -155,8 +146,6 @@ HOST에 들어오는 RSSI 값을 보면서 beacon들의 위치를 계속 바꾸�
 
 RF통신과 beacon을 새롭게 경험해보고 여러 알고리즘을 고안해보면서 전반적으로 배울 점이 많았다. <br>
 그리고 자율주행 자동차를 조이스틱 컨트롤러로 성공적으로 조종하고 beacon을 통한 위치추적도 성공해서 전반적으로 만족스러운 결과가 나왔다.
-
----
 
 ## 개선할 사항
 CLE310을 이용한 beacon의 정확도가 떨어져서 처음에 목표했던 삼각측량법을 이용한 정밀한 위치추적이 불가능하게 되었다. <br> 따라서 향후 정확도를 높여 삼각측량법이 가능하게 하여 정밀한 위치추적을 할 수 있도록 노력해야한다. <br>
