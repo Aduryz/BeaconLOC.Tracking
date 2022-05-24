@@ -1,5 +1,5 @@
 # Beacon을 이용한 위치추적과 자율주행 자동차 
-이 프로젝트는 2021년 한양대 학술동아리 바라미에서 29기 최현서가 제작한 작품 **Beacon을 이용한 위치추적과 자율주행 자동차** 프로젝트입니다.
+이 프로젝트는 2021년 한양대 학술동아리 바라미에서 29기 최현서가 제작하여 출품한 작품 <a href="(https://hyu-barami.github.io/posts/LocationTracking-Beacon_AutonomousVehicle/)" target="_blank">"Beacon을 이용한 위치추적과 자율주행 자동차"</a> 프로젝트입니다.
 
 [1. 개요](#개요) <br>
 
